@@ -16,7 +16,9 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: 1.22.3
-      - name: フォーマットを時効する
+      - name: フォーマットを実行する
+        run: test -z $(gofmt -l .)
+      - name: 静的解析を実行する
         run: go vet ./...
       - name: テストを実行する
         run: go test
